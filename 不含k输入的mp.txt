@@ -1,0 +1,24 @@
+function A = omp(D,X)
+
+[~, K] = size(D);
+
+	a = [];
+	x = X(:, 1);
+	residual = x;
+	index = zeros(K, 1);
+	for j = 1: 1: K,
+		proj = D'*residual;
+		pos = find(abs(proj) == max(abs(proj)));
+		pos = pos(1);
+		index(j) = pos;
+		a = pinv(D(:, index(1:j)))*x;
+		residual = x - D(:,index(1:j))*a;
+        if norm(residual)<=10^(-12)
+            break
+        end
+	end;
+	temp = zeros(K,1);
+    index(index==0)=[];
+	temp(index) = a;
+	A(:,1) = temp;
+return;

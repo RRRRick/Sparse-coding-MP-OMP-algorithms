@@ -1,0 +1,22 @@
+
+>> fitType = fittype('(C^2/2*B-1)*x^(-2*B+1)','independent','x','coefficients',{'C','B'})
+
+fitType = 
+
+     General model:
+     fitType(C,B,x) = (C^2/2*B-1)*x^(-2*B+1)
+>> f = fit(x1,x,fitType)
+plot(f,x1,x)
+Warning: Start point not provided, choosing random start point. 
+> In Warning>Warning.throw at 31
+  In fit>iFit at 320
+  In fit at 109 
+
+f = 
+
+     General model:
+     f(x) = (C^2/2*B-1)*x^(-2*B+1)
+     Coefficients (with 95% confidence bounds):
+       C =       2.178  (2.174, 2.181)
+       B =      0.4331  (0.4316, 0.4345)
+>> 
